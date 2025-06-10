@@ -5,9 +5,6 @@
     "description": "Cross-platform pause Assembly instruction for minimizing busy-waiting on spinlocks and compare-and-swap instructions in lock-free contexts",
     "keywords": ["cpu", "concurrency", "contention", "spinlock", "compare-and-swap", "lock-free"],
     "license": "MIT",
-    "dependencies": {
-      "threading": "goodcleanfun/threading"
-    },
     "src": [
       "src/cpu_relax.h"
     ]

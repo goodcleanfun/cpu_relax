@@ -1,10 +1,11 @@
 #ifndef CPU_RELAX_H
 #define CPU_RELAX_H
 
-#include <stdint.h>
-#include "threading/threading.h"
+#if defined(__SSE2__)
+#include <emmintrin.h>
+#endif
 
-void cpu_relax(void) {
+static inline void cpu_relax(void) {
 #if defined(__amd64__) || defined(__amd64) || defined(__x86_64__) || defined(__x86_64) || defined(_M_X64) || defined(_M_AMD64) || \
     defined(_M_IX86) || defined(__I86__) || defined(i686) || defined(__i686) || defined(__i686__) || \
     defined(i586) || defined(__i586) || defined(__i586__) || \
@@ -42,8 +43,6 @@ void cpu_relax(void) {
   __asm__ __volatile__("nop");
 #elif defined(__wasm__)
   __asm__ __volatile__("nop");
-#else
-    thrd_yield();
 #endif
 }
 
