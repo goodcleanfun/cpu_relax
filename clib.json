@@ -1,6 +1,6 @@
 {
     "name": "cpu_relax",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "repo": "goodcleanfun/cpu_relax",
     "description": "Cross-platform pause Assembly instruction for minimizing busy-waiting on spinlocks and compare-and-swap instructions in lock-free contexts",
     "keywords": ["cpu", "concurrency", "contention", "spinlock", "compare-and-swap", "lock-free"],
