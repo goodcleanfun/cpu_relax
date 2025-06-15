@@ -6,8 +6,7 @@
 #endif
 
 static inline void cpu_relax(void) {
-#if defined(__amd64__) || defined(__amd64) || defined(__x86_64__) || defined(__x86_64) || defined(_M_X64) || defined(_M_AMD64) || \
-    defined(_M_IX86) || defined(__I86__) || defined(i686) || defined(__i686) || defined(__i686__) || \
+#if defined(_M_IX86) || defined(__I86__) || defined(i686) || defined(__i686) || defined(__i686__) || \
     defined(i586) || defined(__i586) || defined(__i586__) || \
     defined(i486) || defined(__i486) || defined(__i486__) || \
     defined(i386) || defined(__i386) || defined(__i386__) || \
@@ -18,6 +17,10 @@ static inline void cpu_relax(void) {
     __asm pause;
   #else
     __asm__ __volatile__("pause");
+  #endif
+#elif defined(__amd64__) || defined(__amd64) || defined(__x86_64__) || defined(__x86_64) || defined(_M_X64) || defined(_M_AMD64)
+  #if defined(__SSE2__)
+    _mm_pause();
   #endif
 #elif defined(__aarch64__) || defined(_M_ARM64)
   #if defined(_MSC_VER)
